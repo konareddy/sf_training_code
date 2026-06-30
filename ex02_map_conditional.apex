@@ -1,5 +1,11 @@
-// Exercise 2 — Map + conditional logic
-// Map of name → age. Loop and print adult (18+) vs minor. Print total entries.
+// Exercise 02 — Map + Conditional Logic
+//
+// Purpose:
+// Maps let you look up a value by key in O(1) time — critical when you need
+// to match related records without nested loops (which hit governor limits fast).
+// In real Salesforce code, Maps are used constantly: AccountId → Account,
+// ContactId → list of cases, etc. This exercise practices key/value storage
+// and if/else branching, both essential building blocks.
 
 Map<String, Integer> nameAgeMap = new Map<String, Integer>();
 nameAgeMap.put('Varun', 18);
@@ -16,7 +22,3 @@ for (String name : nameAgeMap.keySet()) {
 }
 
 System.debug('Total entries: ' + nameAgeMap.size());
-
-// Notes:
-// - Use >= 18 so 18-year-olds count as adults.
-// - Iterate keySet() and call get(key) to read values while looping a map.

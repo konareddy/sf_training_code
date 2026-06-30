@@ -1,18 +1,12 @@
-// Exercise 09 — DML with error handling using Database.insert
+// Exercise 09 — DML with Partial Success + Error Handling
 //
-// 1. Create a List of 3 Contacts — give two a LastName, leave one with LastName = null
-// 2. Use Database.insert(contacts, false) — allOrNone = false
-//    (this allows partial success instead of rolling everything back)
-// 3. Loop through the Database.SaveResult list returned
-// 4. For each result print:
-//      Success: Contact Id = <id>          (if isSuccess())
-//      Failed:  Error = <error message>    (if not isSuccess())
-//
-// Hints:
-// - Database.insert() returns List<Database.SaveResult>
-// - SaveResult has .isSuccess(), .getId(), .getErrors()
-// - Each error has .getMessage()
-// - No Savepoint needed — failed records are automatically skipped
+// Purpose:
+// In bulk operations, one bad record shouldn't fail the entire batch.
+// Database.insert(records, false) — allOrNone = false — lets valid records
+// succeed while bad ones are skipped, returning a SaveResult per record so
+// you can log or handle each failure individually. This is the pattern used
+// in real integrations, data loads, and batch jobs where partial success
+// is better than an all-or-nothing rollback.
 
 List<Contact> contacts = new List<Contact>();
 

@@ -1,21 +1,14 @@
 // Exercise 10 — Apex Class + Static Method
 //
-// 1. Create a class AccountSummary with one static method:
-//      public static void printSummary()
-// 2. Inside the method:
-//    a. Query all Accounts (Id, Name, AnnualRevenue)
-//    b. Calculate total AnnualRevenue across all Accounts
-//    c. Find the Account with the highest AnnualRevenue
-//    d. Print:
-//         Total Accounts  = <count>
-//         Total Revenue   = <sum>
-//         Top Account     = <name> (<revenue>)
+// Purpose:
+// Anonymous Apex is great for one-off scripts, but real Salesforce code lives
+// in classes. A static method belongs to the class itself (not an instance) —
+// useful for utility logic that doesn't need state, like report generators,
+// helper formatters, or callable actions. This exercise is the bridge from
+// scripting to structured Apex: organizing logic into a named, reusable class.
 //
-// Hints:
-// - AnnualRevenue can be null — guard with != null before adding
-// - Track the top Account with a variable outside the loop
-// - Save the class first in Developer Console, then run from anonymous Apex:
-//      AccountSummary.printSummary();
+// Run from anonymous Apex after saving the class:
+//   AccountSummary.printSummary();
 
 public class AccountSummary {
 

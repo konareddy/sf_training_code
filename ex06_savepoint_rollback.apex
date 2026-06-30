@@ -1,28 +1,26 @@
-// Exercise 6 — Savepoint and rollback
-// Insert an Account. Capture savepoint. Update name. Rollback. Confirm original name restored.
+// Exercise 06 — Savepoint and Rollback
+//
+// Purpose:
+// In Salesforce, DML is transactional — but only if you manage it.
+// Savepoints let you mark a point in time and roll back to it if something
+// goes wrong, similar to database transactions. This is essential when your
+// code does multi-step DML and a later step fails — without rollback, you get
+// partial data corruption. Real use cases: multi-object inserts, payment processing,
+// data migration scripts.
 
-// YOUR ATTEMPT GOES HERE
-// Starter skeleton:
-
-// 1. Insert an Account named 'Original Name'
 Account acc = new Account();
-// acc.Name = ???
-// insert ???
+acc.Name = 'Original Name';
+insert acc;
 
-// 2. Capture a savepoint
-// Database.Savepoint sp = ???
+Database.Savepoint sp = Database.setSavepoint();
 
-// 3. Update the name to 'Changed Name' and call update
-// acc.Name = ???
-// update ???
+acc.Name = 'Changed Name';
+update acc;
 
-// 4. Query back and print (should show 'Changed Name')
-// Account check1 = [SELECT Id, Name FROM Account WHERE Id = :acc.Id];
-// System.debug(???);
+Account check1 = [SELECT Id, Name FROM Account WHERE Id = :acc.Id];
+System.debug('After update: ' + check1.Name);
 
-// 5. Rollback
-// Database.rollback(???);
+Database.rollback(sp);
 
-// 6. Query again and print (should show 'Original Name')
-// Account check2 = [SELECT Id, Name FROM Account WHERE Id = :acc.Id];
-// System.debug(???);
+Account check2 = [SELECT Id, Name FROM Account WHERE Id = :acc.Id];
+System.debug('After rollback: ' + check2.Name);

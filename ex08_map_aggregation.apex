@@ -1,16 +1,12 @@
-// Exercise 08 — Multi-object query + Map aggregation
+// Exercise 08 — Multi-Object Query + Map Aggregation
 //
-// 1. Query all Accounts (Id, Name)
-// 2. Query all Contacts that belong to those Accounts (Id, AccountId)
-// 3. Build a Map<Id, Integer> — AccountId → Contact count
-// 4. Loop the Accounts and print:
-//      Account Name = <name>, Contact Count = <count>
-//    If an Account has no contacts, print count as 0
-//
-// Hints:
-// - Use a Set<Id> of Account Ids as a bind variable in the Contact query
-// - Use map.containsKey() to check before map.get()
-// - Use map.put() to insert or update the count
+// Purpose:
+// Real Salesforce apps constantly join parent and child data — Accounts with
+// their Contacts, Opportunities with their Products, Cases with their Comments.
+// This exercise teaches the standard pattern: query both objects, use a Map to
+// correlate them by Id, then loop once to produce the combined output.
+// AggregateResult with GROUP BY is the efficient way to count child records
+// without hitting governor limits on large datasets.
 
 Map<Id,Account> accountsMap = new Map<Id, Account>([SELECT Id, Name FROM Account]);
 

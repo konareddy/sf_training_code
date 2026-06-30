@@ -14,6 +14,7 @@ Run each file in **Developer Console → Debug → Open Execute Anonymous Window
 | [ex05_update_delete.apex](ex05_update_delete.apex) | Update, delete, safe List query | Done |
 | [ex06_savepoint_rollback.apex](ex06_savepoint_rollback.apex) | Savepoint & rollback | Done |
 | [ex07_soql_bind_variable.apex](ex07_soql_bind_variable.apex) | SOQL WHERE + bind variable | Done |
+| [ex08_map_aggregation.apex](ex08_map_aggregation.apex) | Multi-object query + Map aggregation | Done |
 
 ## Key Gotchas
 

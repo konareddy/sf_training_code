@@ -1,0 +1,42 @@
+// Exercise 10 — Apex Class + Static Method
+//
+// 1. Create a class AccountSummary with one static method:
+//      public static void printSummary()
+// 2. Inside the method:
+//    a. Query all Accounts (Id, Name, AnnualRevenue)
+//    b. Calculate total AnnualRevenue across all Accounts
+//    c. Find the Account with the highest AnnualRevenue
+//    d. Print:
+//         Total Accounts  = <count>
+//         Total Revenue   = <sum>
+//         Top Account     = <name> (<revenue>)
+//
+// Hints:
+// - AnnualRevenue can be null — guard with != null before adding
+// - Track the top Account with a variable outside the loop
+// - Save the class first in Developer Console, then run from anonymous Apex:
+//      AccountSummary.printSummary();
+
+public class AccountSummary {
+
+    public static void printSummary() {
+
+        List<Account> accounts = [SELECT Id, Name, AnnualRevenue
+                                  FROM Account
+                                  ORDER BY AnnualRevenue DESC];
+
+        Decimal totalAnnualRevenue = 0;
+        Account topAccount = accounts.isEmpty() ? null : accounts[0];
+
+        for (Account account : accounts) {
+            if (account.AnnualRevenue != null && account.AnnualRevenue > 0) {
+                totalAnnualRevenue = totalAnnualRevenue + account.AnnualRevenue;
+            }
+        }
+
+        System.debug('Total Accounts     = ' + accounts.size());
+        System.debug('Total Revenue      = ' + totalAnnualRevenue);
+        System.debug('Top Account        = ' + topAccount.Name + ' (' + topAccount.AnnualRevenue + ')');
+    }
+
+}

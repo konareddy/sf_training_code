@@ -12,7 +12,8 @@ Run each file in **Developer Console → Debug → Open Execute Anonymous Window
 | [ex03_soql_query.apex](ex03_soql_query.apex) | First SOQL query | Done |
 | [ex04_insert_query_back.apex](ex04_insert_query_back.apex) | Insert + bind variable query | Done |
 | [ex05_update_delete.apex](ex05_update_delete.apex) | Update, delete, safe List query | Done |
-| [ex06_savepoint_rollback.apex](ex06_savepoint_rollback.apex) | Savepoint & rollback | In progress |
+| [ex06_savepoint_rollback.apex](ex06_savepoint_rollback.apex) | Savepoint & rollback | Done |
+| [ex07_soql_bind_variable.apex](ex07_soql_bind_variable.apex) | SOQL WHERE + bind variable | Done |
 
 ## Key Gotchas
 

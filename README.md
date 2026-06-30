@@ -15,7 +15,7 @@ Run each file in **Developer Console → Debug → Open Execute Anonymous Window
 | [ex06_savepoint_rollback.apex](ex06_savepoint_rollback.apex) | Savepoint & rollback | Done |
 | [ex07_soql_bind_variable.apex](ex07_soql_bind_variable.apex) | SOQL WHERE + bind variable | Done |
 | [ex08_map_aggregation.apex](ex08_map_aggregation.apex) | Multi-object query + Map aggregation | Done |
-| [ex09_database_insert_error_handling.apex](ex09_database_insert_error_handling.apex) | DML with partial success + error handling | In progress |
+| [ex09_database_insert_error_handling.apex](ex09_database_insert_error_handling.apex) | DML with partial success + error handling | Done |
 
 ## Key Gotchas
 

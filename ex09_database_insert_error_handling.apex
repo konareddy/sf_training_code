@@ -13,3 +13,21 @@
 // - SaveResult has .isSuccess(), .getId(), .getErrors()
 // - Each error has .getMessage()
 // - No Savepoint needed — failed records are automatically skipped
+
+List<Contact> contacts = new List<Contact>();
+
+contacts.add(new Contact(FirstName = 'test1', LastName = 'test1'));
+contacts.add(new Contact(FirstName = 'test2', LastName = 'test2'));
+contacts.add(new Contact(FirstName = 'test3', LastName = null));
+
+List<Database.SaveResult> saveResults = Database.insert(contacts, false);
+
+for (Database.SaveResult sr : saveResults) {
+    if (sr.isSuccess()) {
+        System.debug('Success: Contact Id = ' + sr.getId());
+    } else {
+        for (Database.Error er : sr.getErrors()) {
+            System.debug('Failed: Error = ' + er.getMessage());
+        }
+    }
+}
